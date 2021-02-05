@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 echo '##Getting the code from the Github##'
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/AvinashK13/cdac-demo']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/AvinashK13/cdac-demo']]])
             }
         }
         stage('Build Demo Application') {
